@@ -69,3 +69,27 @@ textarea:focus {
   background-color: darkgray;
   cursor: crosshair;
 }
+
+.delete-icon {
+  cursor: pointer;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background-color: lightgray;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin-bottom: 2em;
+  margin-top: 0.5em;
+}
+
+.search input {
+  border: none;
+  background-color: darkgray;
+}
+
+.search input:focus {
+  outline: none;
+}
