@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import NotesList from './components/NotesList';
 import { Search } from './components/Search';
+import { Header } from './components/Header';
 
 const App = () => {
   const [notes, setNotes] = useState([
@@ -27,6 +28,20 @@ const App = () => {
     },
   ]);
 
+  const [searchText, setSearchText] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'));
+    if (savedNotes) {
+      setNotes(savedNotes);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('react-notes-app-data', JSON.stringify(notes));
+  }, [notes]);
+
   const addNote = (text) => {
     const date = new Date();
     const newNote = {
@@ -46,13 +61,19 @@ const App = () => {
   };
 
   return (
-    <div className="container">
-      <Search />
-      <NotesList
-        notes={notes}
-        handleAddNote={addNote}
-        handleDeleteNote={deleteNote}
-      />
+    <div className={`${darkMode && 'dark-mode'}`}>
+      <div className="container">
+        <Header handleToggleDarkMode={setDarkMode} />
+        <Search handleSearchNote={setSearchText} />
+        <NotesList
+          //take the list of notes and only return the ones that include the value of the searchText which is what the user put in the search bar aka event.target.value
+          notes={notes.filter((note) =>
+            note.text.toLocaleLowerCase().includes(searchText)
+          )}
+          handleAddNote={addNote}
+          handleDeleteNote={deleteNote}
+        />
+      </div>
     </div>
   );
 };
