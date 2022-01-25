@@ -8,22 +8,22 @@ const App = () => {
   const [notes, setNotes] = useState([
     {
       id: nanoid(),
-      text: 'this is my first notes',
+      text: 'this is my first note',
       date: '15/04/2021',
     },
     {
       id: nanoid(),
-      text: 'this is my secnod notes',
+      text: 'this is my second note',
       date: '15/34/2001',
     },
     {
       id: nanoid(),
-      text: 'this is my third notes',
+      text: 'this is my third note',
       date: '20/04/2021',
     },
     {
       id: nanoid(),
-      text: 'this is my fourth notes',
+      text: 'this is my fourth note',
       date: '15/04/2021',
     },
   ]);
@@ -62,17 +62,19 @@ const App = () => {
 
   return (
     <div className={`${darkMode && 'dark-mode'}`}>
-      <div className="container">
-        <Header handleToggleDarkMode={setDarkMode} />
-        <Search handleSearchNote={setSearchText} />
-        <NotesList
-          //take the list of notes and only return the ones that include the value of the searchText which is what the user put in the search bar aka event.target.value
-          notes={notes.filter((note) =>
-            note.text.toLocaleLowerCase().includes(searchText)
-          )}
-          handleAddNote={addNote}
-          handleDeleteNote={deleteNote}
-        />
+      <div className="main-container">
+        <div className="small-container">
+          <Header handleToggleDarkMode={setDarkMode} />
+          <Search handleSearchNote={setSearchText} />
+          <NotesList
+            //take the list of notes and only return the ones that include the value of the searchText which is what the user put in the search bar aka event.target.value
+            notes={notes.filter((note) =>
+              note.text.toLocaleLowerCase().includes(searchText)
+            )}
+            handleAddNote={addNote}
+            handleDeleteNote={deleteNote}
+          />
+        </div>
       </div>
     </div>
   );

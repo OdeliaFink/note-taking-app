@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: #6f6b3b;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -21,6 +22,8 @@ code {
   flex-direction: column;
   justify-content: space-between;
   /* white-space: pre-wrap; */
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .note-footer {
@@ -33,29 +36,59 @@ code {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: #9a9551;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .dark-mode {
-  background-color: darkslateblue;
+  background-color: rgb(63, 60, 63);
 }
 
 .dark-mode h1 {
   color: ghostwhite;
 }
 
-.container {
-  max-width: 960px;
+.dark-mode button {
+  background-color: white;
+  color: black;
+}
+
+.dark-mode button:hover {
+  background-color: #fffaad;
+  color: black;
+
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.dark-mode .note {
+  background-color: rgb(133, 107, 107);
+  color: white;
+  border-width: 3px;
+  border-color: rgb(182, 157, 157);
+  border-style: solid;
+}
+
+.small-container {
+  max-width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 30px;
+  padding-left: 30px;
   min-height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
 }
 
 .notes-list {
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
 }
 
 .note.new {
@@ -78,11 +111,27 @@ textarea:focus {
   background-color: cornflowerblue;
   border: none;
   padding: 5px 10px 5px 10px;
+  font-size: 15px;
+}
+.toggle {
+  border-radius: 20%;
+  background-color: cornflowerblue;
+  border: none;
+  padding: 5px 10px 5px 10px;
+  font-size: 25px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.toggle:hover {
+  background-color: rgb(52, 79, 128);
+  color: white;
 }
 
 .save:hover {
   background-color: darkgray;
-  cursor: crosshair;
+  cursor: pointer;
 }
 
 .delete-icon {
@@ -93,16 +142,19 @@ textarea:focus {
   display: flex;
   align-items: center;
   background-color: lightgray;
-  border-radius: 10px;
   padding-bottom: 5px;
   padding-top: 5px;
   margin-bottom: 2em;
   margin-top: 0.5em;
+  border-width: 5px;
+  border-color: white;
+  border-style: solid;
+  border-radius: 50px;
 }
 
 .search input {
   border: none;
-  background-color: darkgray;
+  background-color: lightgray;
 }
 
 .search input:focus {
